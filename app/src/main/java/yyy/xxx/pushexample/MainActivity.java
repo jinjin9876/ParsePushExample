@@ -2,11 +2,13 @@ package yyy.xxx.pushexample;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -25,6 +27,23 @@ public class MainActivity extends AppCompatActivity {
 
 		context = this;
 
+
+//		testLocationService();
+//		testMoveLocationSettings();
+	}
+
+
+	
+
+
+	private void testMoveLocationSettings(){
+		Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+		startActivity(intent);
+
+	}
+
+
+	private void testLocationService(){
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 			// TODO: Consider calling
@@ -65,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
 			}
 		});
-
-
 	}
+
 }
